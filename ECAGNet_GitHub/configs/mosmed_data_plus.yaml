@@ -1,0 +1,31 @@
+TRAIN:
+  train_batch_size: 32
+  valid_batch_size: 32
+  num_workers: 8
+  lr: 0.0003
+  image_size: [224, 224]
+  min_epochs: 20
+  max_epochs: 200
+  patience: 20
+  accelerator: gpu
+  devices: 1
+  output_dir: outputs/mosmed_data_plus
+
+MODEL:
+  bert_type: microsoft/BiomedVLP-CXR-BERT-specialized
+  vision_type: facebook/convnext-tiny-224
+  vision_pretrained_path: ""
+  project_dim: 768
+  attention_loss_weight: 0.1
+  gps_mode: blurred
+  gps_kernel_size: 15
+  gps_sigma: 3.0
+  fusion_mode: ecagnet
+
+DATA:
+  train_csv_path: data/MosMedDataPlus/Train_Folder/Train_text.csv
+  train_root_path: data/MosMedDataPlus/Train_Folder
+  valid_csv_path: data/MosMedDataPlus/Val/Val_text.csv
+  valid_root_path: data/MosMedDataPlus/Val
+  test_csv_path: data/MosMedDataPlus/Test_Folder/Test_text.csv
+  test_root_path: data/MosMedDataPlus/Test_Folder
